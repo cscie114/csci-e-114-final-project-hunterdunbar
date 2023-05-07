@@ -4,5 +4,5 @@ layout:base
 <h3>Reviews</h3>
 {% for module in reviews %}
    <h5>{{ module.Name  }}<h5>
-   <a href="/reviews/{{module.Id | downcase}}">
+   <a href="/reviews/{{module.Id}}">
 {% endfor %}
