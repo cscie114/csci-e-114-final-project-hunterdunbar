@@ -16,7 +16,7 @@ import {
             // default is [], add more keys to opt-in e.g. ["appearance", "username"]
             cookies: [],
          });
-         let getReviewsData = await fetch('http://localhost:3000/sf-api/reviews/'+productId +'/10');
+         let getReviewsData = await fetch('https://reviews-api.herokuapp.com/sf-api/reviews/'+productId +'/10');
          let reviewsdata = await getReviewsData.json();
          edge.config((eleventyConfig) => {
             eleventyConfig.addGlobalData("SomeData", reviewsdata);
