@@ -1,0 +1,30 @@
+---
+pagination:
+    data: reviews
+    size: 1
+    alias: review
+    addAllPagesToCollections: true
+permalink: "reviews/{{ review.Id }}/"
+tags: reviews
+title: List of Reviews
+---
+{%- for item in pagination.items %}
+   Review Name: {{ item.Name }} 
+   Review Description: {{ item.Review_Description__c }} 
+   {% if item.Topics__r.size > 0 %}
+   <table>
+      <tr>
+        <th>Topic Name</th>
+        <th>Topic Category</th>
+        <th>Topic Sentiment</th>
+      </tr>
+   {% for topic in item.Topics__r %}
+         <tr>
+           <td>topic.Name</td>
+           <td>topic.Topic_Category__c</td>
+           <td>topic.Topic_Sentiment__c</td>
+         </tr>
+   {% endfor -%}
+   </table>
+{% endif %}
+ {% endfor -%}

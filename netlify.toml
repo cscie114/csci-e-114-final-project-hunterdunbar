@@ -1,0 +1,7 @@
+[[edge_functions]]
+function = "createreview"
+path = "/create-review/"
+
+[[edge_functions]]
+function = "listreviews"
+path = "/products/*"
