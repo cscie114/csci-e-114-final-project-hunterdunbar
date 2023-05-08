@@ -8,6 +8,7 @@ module.exports = async function () {
       duration: "1d", // save for 1 day
       type: "json"    // we’ll parse JSON for you
     });
+    /*
     let fileToCreate = '';
     let theMap = new Map();
     console.log(data);
@@ -20,7 +21,7 @@ module.exports = async function () {
     fs.writeFile('netlify/edge-functions/_generated/idsmap.js', fileToCreate, function (err) {
       if (err) throw err;
       console.log('Replaced!');
-    });
+    });*/
     return data;
 
 }

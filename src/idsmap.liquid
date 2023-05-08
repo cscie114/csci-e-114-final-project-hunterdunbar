@@ -1,0 +1,15 @@
+---
+layout: false
+permalink: netlify/edge-functions/_generated/idsmap.js
+permalinkBypassOutputDir: true
+eleventyExcludeFromCollections: true
+---
+export default {
+
+   {% for item in products %}
+
+      "{{item.Id | downcase}}" : "{{item.Id}}",
+
+   {% endfor %}
+
+}

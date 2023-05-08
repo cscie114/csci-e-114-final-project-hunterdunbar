@@ -1,0 +1,15 @@
+---
+layout: false
+permalink: netlify/edge-functions/_generated/reviewidsmap.js
+permalinkBypassOutputDir: true
+eleventyExcludeFromCollections: true
+---
+export default {
+
+   {% for item in reviews %}
+
+      "{{item.Id | downcase}}" : "{{item.Id}}",
+
+   {% endfor %}
+
+}

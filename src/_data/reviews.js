@@ -21,7 +21,7 @@ module.exports = async function () {
       }
 
    }
-
+   /*
    let fileToCreate = '';
     let theMap = new Map();
     for(var i=0;i<reviews.length;i++){
@@ -35,7 +35,7 @@ module.exports = async function () {
       console.log('Replaced!');
     });
 
-
+   */
    //console.log(reviews);
    /*reviews.filter(removenullids);
    function removenullids(data){
