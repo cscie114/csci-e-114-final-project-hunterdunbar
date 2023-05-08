@@ -1,5 +1,6 @@
 require('dotenv').config();
 let EleventyFetch = require('@11ty/eleventy-fetch');
+let fs = require('fs');
 
 module.exports = async function () {
 
@@ -20,7 +21,22 @@ module.exports = async function () {
       }
 
    }
-   console.log(reviews);
+
+   let fileToCreate = '';
+    let theMap = new Map();
+    for(var i=0;i<reviews.length;i++){
+      theMap.set(reviews[i].Id.toLowerCase(),reviews[i].Id);
+    }
+    console.log(theMap);
+    mapString = JSON.stringify(Object.fromEntries(theMap));
+    fileToCreate = "export default "+mapString;
+    fs.writeFile('netlify/edge-functions/_generated/reviewsidsmap.js', fileToCreate, function (err) {
+      if (err) throw err;
+      console.log('Replaced!');
+    });
+
+
+   //console.log(reviews);
    /*reviews.filter(removenullids);
    function removenullids(data){
       if(data.Id.toLowerCase() == 'a00dm000001yvunias'){
