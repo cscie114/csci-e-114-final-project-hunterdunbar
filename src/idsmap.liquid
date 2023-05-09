@@ -4,7 +4,7 @@ permalink: netlify/edge-functions/_generated/idsmap.js
 permalinkBypassOutputDir: true
 eleventyExcludeFromCollections: true
 ---
-<!--This was a cool feature which I found in an eleventy tutorial. You can create a javascript file and write it on build to a directory. This file takes all product ids and creates a map of lower case to case sensitive ids.-->
+{%comment%}This was a cool feature which I found in an eleventy tutorial. You can create a javascript file and write it on build to a directory. This file takes all product ids and creates a map of lower case to case sensitive ids.{%endcomment%}
 export default {
 
    {% for item in products %}

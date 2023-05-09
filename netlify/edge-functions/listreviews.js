@@ -1,10 +1,3 @@
-//Getting this edge to work was an adventure. I did not realize that the edge does not have access to my node_modules
-//So something as simple as pulling in environment variables was a challenge. I initially wanted to connect to an api directly but I only 
-//have access to out of the box modules like fetch. 
-//Also, I could not figure out how to pass parameters in other than via the URL. But netlify downcases all URL. And slugify will downcase all urls. 
-//So I had to generate a file at build time and feed it to the _generated directory. This file includes a mapping of downcase URLs to the actual case sensitive URLs.
-//My api requires case sensitive URLs. 
-//This edge gets the URL Product Id and converts it to case sensitive. Then it passes it to the reviews endpoint in the api. 
 import {
    EleventyEdge,
    precompiledAppData,
@@ -13,7 +6,13 @@ import {
 
  
  export default async (request, context) => {
-   
+   //Getting this edge to work was an adventure. I did not realize that the edge does not have access to my node_modules
+   //So something as simple as pulling in environment variables was a challenge. I initially wanted to connect to an api directly but I only 
+   //have access to out of the box modules like fetch. 
+   //Also, I could not figure out how to pass parameters in other than via the URL. But netlify downcases all URL. And slugify will downcase all urls. 
+   //So I had to generate a file at build time and feed it to the _generated directory. This file includes a mapping of downcase URLs to the actual case sensitive URLs.
+   //My api requires case sensitive URLs. 
+   //This edge gets the URL Product Id and converts it to case sensitive. Then it passes it to the reviews endpoint in the api. 
    let url = new URL(request.url);
    console.log(idsmap);
    let productId = url.pathname.split("/")[2]
