@@ -24,7 +24,7 @@ import {
          let caseSensProdId = productIdMap.get(productId.toLowerCase());
          console.log(caseSensProdId);
          if(caseSensProdId){
-            let getReviewsData = await fetch('https://reviews-api.herokuapp.com/sf-api/reviews/'+caseSensProdId +'/10');
+            let getReviewsData = await fetch('https://reviews-api.herokuapp.com/sf-api/reviews/'+caseSensProdId +'/100');
             let reviewsdata = await getReviewsData.json();
             edge.config((eleventyConfig) => {
                eleventyConfig.addGlobalData("SomeData", reviewsdata);

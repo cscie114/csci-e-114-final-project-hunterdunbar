@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "eleventy",
-    "start": "eleventy --serve"
+    "start": "eleventy --serve",
+    "lint": "eslint --ext js,jsx, src"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +20,8 @@
     "fs": "^0.0.1-security",
     "jsforce": "^1.11.1",
     "netlify-cli": "^14.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0"
   }
 }

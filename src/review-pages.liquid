@@ -8,6 +8,7 @@ permalink: "reviews/{{ review.Id }}/"
 tags: reviews
 title: List of Reviews
 ---
+<a href="javascript:history.back()">Go Back</a>
 {%- for item in pagination.items %}
    Review Name: {{ item.Name }} 
    Review Description: {{ item.Review_Description__c }} 
@@ -18,11 +19,11 @@ title: List of Reviews
         <th>Topic Category</th>
         <th>Topic Sentiment</th>
       </tr>
-   {% for topic in item.Topics__r %}
+   {% for topic in item.Topics__r.records %}
          <tr>
-           <td>topic.Name</td>
-           <td>topic.Topic_Category__c</td>
-           <td>topic.Topic_Sentiment__c</td>
+           <td> {{ topic.Name }} </td>
+           <td> {{ topic.Topic_Category__c }} </td>
+           <td> {{ topic.Topic_Sentiment__c }} </td>
          </tr>
    {% endfor -%}
    </table>
