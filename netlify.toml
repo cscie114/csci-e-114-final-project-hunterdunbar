@@ -1,6 +1,9 @@
 [Settings]
   ID = "3cdcb5ef-48f0-4e7b-9a53-0f65037881e5"
 
+[build]
+command = "npx @11ty/eleventy"
+
 [[edge_functions]]
 function = "createreview"
 path = "/create-review/"
