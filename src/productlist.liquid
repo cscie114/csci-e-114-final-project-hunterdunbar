@@ -1,8 +1,9 @@
 ---
-layout:base
+layout: base
+headText: Click a product to view reviews
 ---
 <a href="/">Home</a>
 <h3>Products</h3>
 {% for module in products %}
-   <a href="/products/{{module.Id}}"><h5>{{ module.Name  }}</h5></a>
+   <button class="button"><a href="/products/{{module.Id}}"><h5>{{ module.Name  }}</h5></a></button>
 {% endfor %}
