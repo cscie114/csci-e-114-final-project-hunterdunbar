@@ -16,7 +16,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
-      - run: npx netlify build
+      - run: npx netlify build --site=3cdcb5ef-48f0-4e7b-9a53-0f65037881e5
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0
         with:
