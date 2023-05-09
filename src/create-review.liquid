@@ -1,9 +1,10 @@
 ---
 title: Create a Review
 layout: base
-headText: This is where we create reviews
+headText: Under Construction - Permalink is False
+permalink: false
 ---
-
+<!-- ignore this file. It is under construction -->
 <form action="{{ page.url }}" method="post">
    <label>Review Subject</label><input type="text" name="review_subject" placeholder="text goes here" >
    <br>
@@ -20,17 +21,6 @@ headText: This is where we create reviews
    {{SomeData.review_subject}}
    {% if SomeData.review_subject != null %}
          Show something else
-         <div id="snackbar">Some text some message..</div>
-         <script>console.log('here');
-         // Get the snackbar DIV
-         var x = document.getElementById("snackbar");
-       
-         // Add the "show" class to DIV
-         x.className = "show";
-       
-         // After 3 seconds, remove the show class from DIV
-         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-         </script>
    {% endif %}
 
  {% endedge %}

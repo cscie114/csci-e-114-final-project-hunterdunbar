@@ -7,12 +7,15 @@ pagination:
     addAllPagesToCollections: true
 permalink: "reviews/{{ review.Id }}/"
 tags: reviews
-title: List of Reviews
+headText: Review Info
 ---
-<a href="javascript:history.back()">Go Back</a>
+<!--This page will generate a new page for every review in the database. This page does not need an edge because the topics data is loaded as part of the edge.-->
+<button class="button" onclick="javascript:history.back()">Go Back</button>
 {%- for item in pagination.items %}
-   Review Name: {{ item.Name }} 
-   Review Description: {{ item.Review_Description__c }} 
+   <h2>Review Information</h2>
+   <h4>Review Name: </h4> {{ item.Name }} 
+   <h4>Review Description: </h4>{{ item.Review_Description__c }} 
+   <h2>Topics</h2>
    {% if item.Topics__r.size > 0 %}
    <table>
       <tr>

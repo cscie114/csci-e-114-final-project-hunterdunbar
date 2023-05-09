@@ -2,8 +2,8 @@
 layout: base
 headText: Click a product to view reviews
 ---
-<a href="/">Home</a>
-<h3>Products</h3>
+<button class="button" onclick="window.location.href='/'">Home</button>
+<h3>All Products</h3>
 {% for module in products %}
-   <button class="button"><a href="/products/{{module.Id}}"><h5>{{ module.Name  }}</h5></a></button>
+   <button class="button" onclick="window.location.href='/products/{{module.Id}}'"><h5>{{ module.Name  }}</h5></button>
 {% endfor %}

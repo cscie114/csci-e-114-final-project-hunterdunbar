@@ -1,3 +1,4 @@
+//This is not used. I could delete it but am keeping it as a template for future projects. 
 import {
   EleventyEdge,
   precompiledAppData,

@@ -1,8 +1,10 @@
 ---
-layout:base
+layout: base
+headText: Click a review
 ---
-<h3>Reviews</h3>
-{% for module in reviews %}
-   <h5>{{ module.Name  }}<h5>
-   <a href="/reviews/{{module.Id}}">
+<!--This provides a list of Reviews from the reviews data file in _data. I am not sure if onclick="window.location.href='/' is the best way of handling the navigation but it seems to work fine.-->
+<button class="button" onclick="window.location.href='/'">Home</button>
+<h3>All Reviews</h3>
+{% for module in reviews %}  
+   <button class="button" onclick="window.location.href='/reviews/{{module.Id}}'"><h5>{{ module.Name  }}<h5></button>
 {% endfor %}

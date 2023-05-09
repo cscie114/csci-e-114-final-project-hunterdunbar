@@ -5,11 +5,17 @@ pagination:
     size: 1
     alias: product
 permalink: "products/{{ product.Id }}/"
+eleventyComputed:
+   headText: "{{ product.Name }}"
 ---
-
-Product Name: {{ product.Name }} 
-Product Description: {{ product.Description }} 
-Product Family: {{ product.Family }}
+<button class="button" onclick="window.location.href='/productlist'">All Products</button>
+<span class="a">
+<h2>Product Information</h2>
+<h4>Product Description: </h4> {{ product.Description }} 
+<h4>Product Family: </h4>{{ product.Family }}
+</span>
+<span class="a">
+<h2>Reviews</h2>
 {% edge %}
    {% assign reviewdata = SomeData %}
    <table>
@@ -25,3 +31,4 @@ Product Family: {{ product.Family }}
    {% endfor%}
    </table>
 {% endedge %}
+</span>
