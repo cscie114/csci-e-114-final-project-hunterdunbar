@@ -2,6 +2,7 @@
 .env
 node_modules
 .cache
+dist
 # Netlify generated stuff
 .netlify/
 
