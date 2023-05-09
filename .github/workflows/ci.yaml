@@ -1,6 +1,5 @@
 ---
 env:
-  LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
   username: ${{ secrets.username }}
   password: ${{ secrets.password }}
   token: ${{ secrets.token }}
