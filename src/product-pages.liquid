@@ -43,7 +43,7 @@ edge function to make a callout to my API to return review information specific 
          {% for item in reviewdata %}
             <tr>
                   <td><a href="/reviews/{{item.Id}}"">{{item.Name}}</a></td>
-                  <td>{{item.Review_Description__c}}</td>
+                  <td><p>{{item.Review_Description__c}}</p></td>
             </tr>
          {% endfor%}
          </table>
@@ -60,9 +60,9 @@ edge function to make a callout to my API to return review information specific 
          {% for review in reviewdata %}
             {% for topic in review.Topics__r.records%}
             <tr>
-                  <td>{{topic.Name}}</td>
-                  <td>{{topic.Topic_Category__c}}</td>
-                  <td>{{topic.Topic_Sentiment__c}}</td>
+                  <td><p>{{topic.Name}}</p></td>
+                  <td><p>{{topic.Topic_Category__c}}</p></td>
+                  <td><p>{{topic.Topic_Sentiment__c}}</p></td>
             </tr>
          {% endfor%}
             
