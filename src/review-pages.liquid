@@ -13,8 +13,8 @@ headText: Review Info
 <button class="button" onclick="javascript:history.back()">Go Back</button>
 {%- for item in pagination.items %}
    <h2>Review Information</h2>
-   <h4>Review Name: </h4> {{ item.Name }} 
-   <h4>Review Description: </h4>{{ item.Review_Description__c }} 
+   <h4>Review Name: </h4> <p>{{ item.Name }} </p>
+   <h4>Review Description: </h4> <p>{{ item.Review_Description__c }} </p>
    <h2>Topics</h2>
    {% if item.Topics__r.size > 0 %}
    <table>

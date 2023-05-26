@@ -8,27 +8,124 @@ permalink: "products/{{ product.Id }}/"
 eleventyComputed:
    headText: "{{ product.Name }}"
 ---
+<!--This page will generate a new page for every product in the database. I do not have a list of Products with their reviews in the same dataset. Because of this I am using an 
+edge function to make a callout to my API to return review information specific to a particular product. You can find the Edge at listreviews.js-->
 <button class="button" onclick="window.location.href='/productlist'">All Products</button>
-<span class="a">
-<h2>Product Information</h2>
-<h4>Product Description: </h4> {{ product.Description }} 
-<h4>Product Family: </h4>{{ product.Family }}
-</span>
-<span class="a">
-<h2>Reviews</h2>
+<div class="grid-container">
+   <div class="prodSection">
+
+      <h2>Product Information</h2>
+      <h4>Product Description: </h4> <p>{{ product.Description }} </p>
+      <h4>Product Family: </h4> <p>{{ product.Family }}</p>
+
+   </div>
+
+   <div class="chartSection">
+      <canvas id="myChart"></canvas>
+   </div>
+   <div class="pieChartSection">
+      <canvas id="myPieChart"></canvas>
+   </div>
+
+</div>
+
+      
 {% edge %}
+<div class="table-grid-container">
    {% assign reviewdata = SomeData %}
-   <table>
-      <tr>
-        <th>Review Title</th>
-        <th>Review Description</th>
-      </tr>
-   {% for item in reviewdata %}
-      <tr>
-            <td><a href="/reviews/{{item.Id}}"">{{item.Name}}</a></td>
-            <td>{{item.Review_Description__c}}</td>
-      </tr>
-   {% endfor%}
-   </table>
+   <div class="reviewSection">
+         <h2>Reviews</h2>
+         <table>
+            <tr>
+            <th>Review Title</th>
+            <th>Review Description</th>
+            </tr>
+         {% for item in reviewdata %}
+            <tr>
+                  <td><a href="/reviews/{{item.Id}}"">{{item.Name}}</a></td>
+                  <td>{{item.Review_Description__c}}</td>
+            </tr>
+         {% endfor%}
+         </table>
+   </div>
+
+   <div class="topicSection">
+      <h2>Topics</h2>
+      <table>
+         <tr>
+            <th>Topic</th>
+            <th>Topic Category</th>
+            <th>Topic Sentiment</th>
+         </tr>
+         {% for review in reviewdata %}
+            {% for topic in review.Topics__r.records%}
+            <tr>
+                  <td>{{topic.Name}}</td>
+                  <td>{{topic.Topic_Category__c}}</td>
+                  <td>{{topic.Topic_Sentiment__c}}</td>
+            </tr>
+         {% endfor%}
+            
+      {% endfor%}
+      </table>
+   </div>
+{% assign theLabels = CategoryDataLabels %}
+{% assign theValues = CategoryDataValues %}
+
+{% assign SentimentLabels = SentimentDataLabels %}
+{% assign SentimentValues = SentimentDataValues %}
+
+<script>
+   const ctx = document.getElementById('myChart');
+   console.log('labels');
+
+ 
+   new Chart(ctx, {
+     type: 'bar',
+     data: {
+       labels: {{theLabels}},
+       datasets: [{
+         label: 'Topic Category Count',
+         data: {{theValues}},
+         borderWidth: 1,
+         backgroundColor: '#7823dc'
+       }]
+     },
+     options: {
+      scales: {
+         y: {
+           beginAtZero: true
+         }
+       },
+     }
+   });
+
+   const piectx = document.getElementById('myPieChart');
+   console.log('labels');
+
+ 
+   new Chart(piectx, {
+     type: 'pie',
+     data: {
+       labels: {{SentimentLabels}},
+       datasets: [{
+         label: 'Topic Sentiment',
+         data: {{SentimentValues}},
+         borderWidth: 1,
+         backgroundColor: [
+            'Green','Yellow','Red'
+         ]
+       }]
+     },
+     options: {
+
+
+     }
+   });
+ </script>
+</div>
 {% endedge %}
-</span>
+
+
+
+ 

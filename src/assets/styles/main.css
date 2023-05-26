@@ -6,16 +6,25 @@
   --darkgray: #323232;
 }
 
- .header {
+main {
+  margin: 100px;
+}
+
+.header {
   width: 100%;
   padding:40px 0;
   text-align: center;
   background: var(--purple);
   color: white;
+  font-family: graphikbold;
 }
 
-* { 
-  font-family: Futura;
+p { 
+  font-family: graphikextralight;
+}
+
+h1,h2,h3,h4,h5 { 
+  font-family: graphiksemibold;
 }
 
 .button {
@@ -54,12 +63,68 @@ th, td {
   border-collapse: collapse;
 }  
 
+a {
+  color: var(--purple);
+}
+
 table {
   width: 800px;
 }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+  padding: 10px;
+}
+.table-grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+  padding: 10px;
+}
+.reviewSection, .productSection  { 
+  grid-column : 1;
+}
+.chartSection{ 
+    grid-column : 2;
+    height:300px;
+
+}
+.pieChartSection { 
+  grid-column : 3;
+  height:300px;
+
+}
+.topicSection
+{ 
+  grid-column : 3;
+}
+
 
 span.a {
   display: inline; /* the default for span */
   width: 800px;
   padding: 5px;
+}
+
+@font-face {
+  font-family: graphik;
+  src: url("./graphik_arabic/GraphikArabic-Black.otf");
+}
+@font-face {
+  font-family: graphikbold;
+  src: url("./graphik_arabic/GraphikArabic-Bold.otf");
+}
+@font-face {
+  font-family: graphikextralight;
+  src: url("./graphik_arabic/GraphikArabic-Extralight.otf");
+}
+@font-face {
+  font-family: graphikregular;
+  src: url("./graphik_arabic/GraphikArabic-Regular.otf");
+}
+@font-face {
+  font-family: graphiksemibold;
+  src: url("./graphik_arabic/GraphikArabic-Semibold.otf");
 }

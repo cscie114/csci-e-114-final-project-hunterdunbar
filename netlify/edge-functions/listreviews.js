@@ -31,8 +31,42 @@ import {
          if(caseSensProdId){
             let getReviewsData = await fetch('https://reviews-api.herokuapp.com/sf-api/reviews/'+caseSensProdId +'/100');
             let reviewsdata = await getReviewsData.json();
+
+            //let getTopicsData = await fetch('https://reviews-api.herokuapp.com/sf-api/topics/'+caseSensProdId +'/100');
+            //let topicsData = reviewsdata.json();
+            let topicCategoryCountMap = new Map();
+            let topicSentimentCountMap = new Map();
+            console.log(reviewsdata);  
+            reviewsdata.forEach(data => {
+               console.log(data);
+               if(data.Topics__r){
+                  data.Topics__r.records.forEach(topic => {
+                     if(topicCategoryCountMap.get(topic.Topic_Category__c) == undefined){
+                        topicCategoryCountMap.set(topic.Topic_Category__c, 1);
+                     }else{
+                        topicCategoryCountMap.set(topic.Topic_Category__c, topicCategoryCountMap.get(topic.Topic_Category__c)+1);
+                     }
+                     if(topicSentimentCountMap.get(topic.Topic_Sentiment__c) == undefined){
+                        topicSentimentCountMap.set(topic.Topic_Sentiment__c, 1);
+                     }else{
+                        topicSentimentCountMap.set(topic.Topic_Sentiment__c, topicSentimentCountMap.get(topic.Topic_Sentiment__c)+1);
+                     }
+                  });
+               }
+               
+               
+               
+            });
+
+            console.log(Array.from(topicCategoryCountMap.keys()));
+            console.log(JSON.stringify(Array.from(topicCategoryCountMap.keys())));
             edge.config((eleventyConfig) => {
                eleventyConfig.addGlobalData("SomeData", reviewsdata);
+               eleventyConfig.addGlobalData("CategoryDataLabels", JSON.stringify(Array.from(topicCategoryCountMap.keys())));
+               eleventyConfig.addGlobalData("CategoryDataValues", JSON.stringify(Array.from(topicCategoryCountMap.values())));
+               eleventyConfig.addGlobalData("SentimentDataLabels", JSON.stringify(Array.from(topicSentimentCountMap.keys())));
+               eleventyConfig.addGlobalData("SentimentDataValues", JSON.stringify(Array.from(topicSentimentCountMap.values())));
+
             });
          }
          return await edge.handleResponse();
