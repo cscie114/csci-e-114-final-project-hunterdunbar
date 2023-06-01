@@ -6,7 +6,7 @@ command = "npx @11ty/eleventy"
 
 [[edge_functions]]
 function = "createreview"
-path = "/create-review/"
+path = "/create-review/*"
 
 [[edge_functions]]
 function = "listreviews"

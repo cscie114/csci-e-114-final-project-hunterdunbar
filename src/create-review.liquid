@@ -1,26 +1,47 @@
 ---
-title: Create a Review
 layout: base
-headText: Under Construction - Permalink is False
-permalink: false
+pagination:
+    data: products
+    size: 1
+    alias: product
+permalink: "create-review/{{ product.Id }}/"
+eleventyComputed:
+   headText: "Create Review for {{ product.Name }}"
 ---
-<!-- ignore this file. It is under construction -->
-<form action="{{ page.url }}" method="post">
-   <label>Review Subject</label><input type="text" name="review_subject" placeholder="text goes here" >
-   <br>
-   <label>Review Text</label><textarea rows="5" cols="33" name="review_subject_info">
-      This is the default comment...  
-    </textarea>
+<button class="button" onclick="window.location.href='/products/{{ product.Id }}'">Back to Product Overview</button> 
+<div class="grid-container">
 
- 
-   <button type="submit">Save</button>
- </form>
- 
+  <div class="createReviewForm">
+  <div class="login-box">
+    <h2>Create Review</h2>
+    <form action="{{ page.url }}" method="post">
+      <div class="user-box">
+        <input type="text" name="reviewName" required="">
+        <label>Review Title</label>
+      </div>
+      <div class="user-box">
+        <textarea name="Description" cols="40" rows="5"></textarea>
+        <label>Review Description</label>
+      </div>
+      <button class="button" type="submit">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+    </button>
+    </form>
+  </div>
+</div>
+<div class="gptresponse"> 
  {% edge %} 
-   {{eleventy.edge}}
-   {{SomeData.review_subject}}
-   {% if SomeData.review_subject != null %}
-         Show something else
-   {% endif %}
 
+ <div class="login-box">
+  <h2>Response</h2>
+ <p>
+   {{SomeData}}
+ </p>
+</div>
  {% endedge %}
+</div>
+</div>

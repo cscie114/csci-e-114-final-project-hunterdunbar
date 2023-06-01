@@ -11,6 +11,7 @@ eleventyComputed:
 <!--This page will generate a new page for every product in the database. I do not have a list of Products with their reviews in the same dataset. Because of this I am using an 
 edge function to make a callout to my API to return review information specific to a particular product. You can find the Edge at listreviews.js-->
 <button class="button" onclick="window.location.href='/productlist'">All Products</button>
+
 <div class="grid-container">
    <div class="prodSection">
 
@@ -29,8 +30,9 @@ edge function to make a callout to my API to return review information specific 
 
 </div>
 
-      
+<button class="button" onclick="window.location.href='/create-review/{{ product.Id }}'">Create New Review</button>   
 {% edge %}
+
 <div class="table-grid-container">
    {% assign reviewdata = SomeData %}
    <div class="reviewSection">
@@ -113,7 +115,7 @@ edge function to make a callout to my API to return review information specific 
          data: {{SentimentValues}},
          borderWidth: 1,
          backgroundColor: [
-            'Green','Yellow','Red'
+            'lightgreen','lightyellow','lightcoral'
          ]
        }]
      },

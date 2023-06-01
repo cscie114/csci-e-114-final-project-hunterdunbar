@@ -36,6 +36,9 @@ import {
             //let topicsData = reviewsdata.json();
             let topicCategoryCountMap = new Map();
             let topicSentimentCountMap = new Map();
+            topicSentimentCountMap.set("Positive",0);
+            topicSentimentCountMap.set("Neutral", 0);
+            topicSentimentCountMap.set("Negative",0);
             console.log(reviewsdata);  
             reviewsdata.forEach(data => {
                console.log(data);
@@ -46,11 +49,7 @@ import {
                      }else{
                         topicCategoryCountMap.set(topic.Topic_Category__c, topicCategoryCountMap.get(topic.Topic_Category__c)+1);
                      }
-                     if(topicSentimentCountMap.get(topic.Topic_Sentiment__c) == undefined){
-                        topicSentimentCountMap.set(topic.Topic_Sentiment__c, 1);
-                     }else{
-                        topicSentimentCountMap.set(topic.Topic_Sentiment__c, topicSentimentCountMap.get(topic.Topic_Sentiment__c)+1);
-                     }
+                     topicSentimentCountMap.set(topic.Topic_Sentiment__c, topicSentimentCountMap.get(topic.Topic_Sentiment__c)+1);
                   });
                }
                

@@ -19,7 +19,7 @@ main {
   font-family: graphikbold;
 }
 
-p { 
+p,input,label,textarea { 
   font-family: graphikextralight;
 }
 
@@ -84,10 +84,10 @@ table {
   gap: 10px;
   padding: 10px;
 }
-.reviewSection, .productSection  { 
+.createReviewForm, .reviewSection, .productSection  { 
   grid-column : 1;
 }
-.chartSection{ 
+.gptresponse, .chartSection{ 
     grid-column : 2;
     height:300px;
 
@@ -129,3 +129,76 @@ span.a {
   font-family: graphiksemibold;
   src: url("./graphik_arabic/GraphikArabic-Semibold.otf");
 }
+
+
+.login-box {
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  background: var(--lightgray);
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.login-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: var(--purple);
+  text-align: center;
+}
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--purple);
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid var(--purple);
+  outline: none;
+  background: transparent;
+}
+.login-box .user-box textarea {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--purple);
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid var(--purple);
+  outline: none;
+  background: transparent;
+}
+.login-box .user-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--purple);
+  pointer-events: none;
+  transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: var(--purple);
+  font-size: 12px;
+}
+
+.login-box .user-box textarea:focus ~ label,
+.login-box .user-box textarea:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: var(--purple);
+  font-size: 12px;
+}
+
+
+
