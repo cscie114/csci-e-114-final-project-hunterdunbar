@@ -6,7 +6,7 @@ pagination:
     alias: product
 permalink: "products/{{ product.Id }}/"
 eleventyComputed:
-   headText: "{{ product.Name }}"
+   headText: "{{ product.Name }} SentiGrade&deg;"
 ---
 <!--This page will generate a new page for every product in the database. I do not have a list of Products with their reviews in the same dataset. Because of this I am using an 
 edge function to make a callout to my API to return review information specific to a particular product. You can find the Edge at listreviews.js-->
@@ -115,7 +115,7 @@ edge function to make a callout to my API to return review information specific 
          data: {{SentimentValues}},
          borderWidth: 1,
          backgroundColor: [
-            'lightgreen','lightyellow','lightcoral'
+            '#76E889','#FFEB00','#FF496D'
          ]
        }]
      },
